@@ -1,8 +1,10 @@
+import { Book } from 'src/book/entities/book.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
   Index,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -46,4 +48,7 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(() => Book, (book) => book.user)
+  book: Book[];
 }

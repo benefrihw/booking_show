@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Book } from 'src/book/entities/book.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({
   name: 'shows',
@@ -33,4 +34,7 @@ export class Show {
 
   @Column({ type: 'int', nullable: false })
   seat: number;
+
+  @OneToMany(() => Book, (book) => book.show)
+  book: Book[];
 }
