@@ -9,7 +9,7 @@ import {
   Get,
   Param,
   Post,
-  Put,
+  Patch,
   UseGuards,
   Query,
 } from '@nestjs/common';
@@ -19,7 +19,7 @@ import { ShowService } from './show.service';
 import { createShowDto } from './dto/create-show.dto';
 
 @UseGuards(RolesGuard)
-@Controller('show')
+@Controller('shows')
 export class ShowController {
   constructor(private readonly showService: ShowService) {}
 
@@ -71,7 +71,7 @@ export class ShowController {
 
   // 공연 수정
   @Roles(Role.Admin)
-  @Put(':id')
+  @Patch(':id')
   async update(@Param('id') id: number, @Body() updateShowDto: UpdateShowDto) {
     const updatedShow = await this.showService.update(id, updateShowDto);
     return { message: '공연 수정이 완료되었습니다.', updatedShow };

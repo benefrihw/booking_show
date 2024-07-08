@@ -6,7 +6,7 @@ import { Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { BookService } from './book.service';
 
 @UseGuards(RolesGuard)
-@Controller('book')
+@Controller('books')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
 
